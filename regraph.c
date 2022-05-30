@@ -103,13 +103,13 @@ int main(){
 
 		case 'e': case 'E':
            
-            printf("삽입할 간선 개수 입력 :");
+            printf("edge num :");
             scanf("%d",&edge);
             if(edge>MAX_VERTICES*(MAX_VERTICES-1)/2) //입력한 간선의 개수보다 더 많은 간선을 입력하면 break
                 break;
                 for(int i=0;i<edge;i++){ //간선 개수만큼 반복
                     int a,b; //시작 정점과 끝 정점
-			    printf("정점 u,v 입력 :");
+			    printf("vertex u & v :");
 			    scanf("%d %d",&a,&b);
 
 				//무방향 그래프로 구현하기 위해
@@ -121,14 +121,14 @@ int main(){
 
 		case 'd': case 'D':
 			
-			printf("탐색 시작 정점을 입력하세요 :");
+			printf("start vertex for dfs :");
 			scanf("%d",&dfs);
 			DepthFirstSearch(g,dfs); //깊이우선탐색
 			break;
 
 		case 'b': case 'B':
 			
-			printf("탐색 시작 정점을 입력하세요 :");
+			printf("start vertex for bfs :");
 			scanf("%d",&bfs);
 			BreathFirstSearch(g,bfs); //넓이우선탐색
 			break;
@@ -161,7 +161,7 @@ void initializeGraph(GraphType* g){
 
 void insertvertex(GraphType *g,int v){
 	if((g->n)+1>MAX_VERTICES){
-		printf("그래프 정점의 최대 개수는 10개 입니다.\n");
+		printf("Vertex max 10\n");
 		return;
 	}
 	g->n++;
