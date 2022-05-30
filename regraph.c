@@ -355,7 +355,7 @@ void BreathFirstSearch(GraphType *g,int v){ //넓이 우선 탐색
 void PrintGraph(GraphType *g){
 	for(int i=0;i<g->n;i++){
 		GraphNode* print=g->adj_list[i]; //인접리스트를 GraphNode의 포인터를 사용해 출력
-		printf("-vertex %d의 인접리스트-",i);
+		printf("-vertex %d adj_list-",i);
 		while(print!=NULL){
 			printf("-> %d",print->vertex);//정점 출력
 
