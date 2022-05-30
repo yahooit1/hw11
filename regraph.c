@@ -72,6 +72,7 @@ int main(){
 	int bfs;//탐색 시작 정점 for bfs
     GraphType *g=(GraphType*)malloc(sizeof(GraphType));
     do{
+		printf("\n");
 		printf("[-----[Gahyun] [2020045070] -----\n");
 		printf("\n\n");
 		printf("----------------------------------------------------------------\n");
@@ -164,7 +165,7 @@ void insertvertex(GraphType *g,int v){
 		printf("Vertex max 10\n");
 		return;
 	}
-	g->n++;
+	g->n++; //그래프 정점수 추가
 }
 
 void insertedge(GraphType *g,int u, int v){
@@ -191,6 +192,7 @@ void insertedge(GraphType *g,int u, int v){
 			if(curr->vertex>v){//첫 노드 앞에 삽입해야할 경우
 				if(curr==g->adj_list[u]){
 					input->link=g->adj_list[u];//삽입할노드의 링크에 첫번째노드를 저장
+					g->adj_list[u]=input;//삽입 노드를 첫번째 노드로 지정
 				}
 				//첫 노드가 아닌 경우 (중간이나 마지막인 경우)
 				else{
@@ -230,11 +232,12 @@ int pop(){ //stack pop
 	int elem;
 	StackNode* temp=top;
 
-	if(top==NULL){ //top이 NULL이면
+	if(StackEmpty()){ //stack이 비었다면
 		return 0;
 	}
 
 	else{
+		elem=temp->data;
 		top=temp->link; //top에 stackNode의 포인터 temp의 link 저장
 		free(temp);//할당된메모리해제
 
@@ -258,12 +261,12 @@ void DepthFirstSearch(GraphType *g,int v){ //깊이우선탐색
 			if(!g->visit[curr->vertex]){ //현재 노드가 FALSE이면
 				push(curr->vertex); //현재 정점 push
 				g->visit[curr->vertex]=TRUE; //현재 정점의 방문 플래그 TRUE
+				printf("%d\t",curr->vertex);//현재 정점 출력
 				v=curr->vertex; //v에 현재 정점 저장
 				curr=g->adj_list[v]; //curr에 g의 인접리스트 저장
 			}
-			else{
-				curr=curr->link; //TRUE이면 curr link 저장
-			}
+			else
+				curr=curr->link; //TRUE이면 curr link 저장			
 		}
 		v=pop(); //pop
 	}
